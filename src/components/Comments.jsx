@@ -1,10 +1,21 @@
 import Comment from "./Comment";
+import { useState } from "react";
 
 function Comments({ commentsNum }) {
+  const [showComment, setShowComment] = useState(true);
+
   const commentList = commentsNum.map((comment) => {
     return (
-      <Comment key={comment.id} user={comment.user} comment={comment.comment} />
-      
+      <>
+        <Comment
+          key={comment.id}
+          user={comment.user}
+          comment={comment.comment}
+        />
+        <button onClick={() => setShowComment(!showComment)}>
+          Delete Comment
+        </button>
+      </>
     );
   });
 
